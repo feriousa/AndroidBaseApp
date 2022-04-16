@@ -1,0 +1,113 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'dagger.hilt.android.plugin'
+    id 'org.sonarqube'
+}
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+
+    defaultConfig {
+        applicationId "com.github.farzmand.androidbaseapp"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    //kotlin
+    implementation deps.kotlin
+    implementation deps.core_ktx
+    implementation deps.activity_ktx
+    implementation deps.fragment_ktx
+
+    //Firebase
+    implementation platform(deps.firebase)
+    implementation deps.firebase_analytics
+    implementation deps.firebase_messaging
+
+    //HTTP
+    api deps.retrofit.runtime
+    api deps.retrofit.moshi_converter
+    api deps.okhttp_logging_interceptor
+    api deps.network_connection
+
+    //Database
+    api deps.room.runtime
+    kapt deps.room.compiler
+    api deps.room.ktx
+
+    //Auto read otp code
+    implementation deps.playservice_auth
+
+    //combined LiveData
+    implementation deps.lifecycle.combine_livedata
+
+    //Crash Reporter && analytics
+    implementation deps.metrix
+    implementation deps.adtrace
+    implementation deps.install_referrer
+
+    //UI
+    implementation deps.app_compat
+    implementation deps.material
+    implementation deps.constraint_layout
+    implementation deps.cardview
+    implementation deps.recyclerview
+    implementation deps.viewpager
+    implementation deps.browser
+    implementation deps.otp_view
+    implementation deps.lottie
+    implementation deps.onboarding
+    implementation deps.date_picker
+    implementation deps.timeline_view
+    implementation deps.swipe_to_refresh
+    implementation deps.image_picker
+
+    //Animation
+    implementation deps.yoyo
+    implementation deps.yoyo_easing
+
+    //Architecture components
+    implementation deps.lifecycle.runtime
+    kapt deps.lifecycle.compiler
+    //combined LiveData
+    implementation deps.lifecycle.combine_livedata
+
+    //DI
+    implementation deps.hilt.runtime
+    kapt deps.hilt.compiler
+    kapt deps.hilt.androidx_compiler
+
+    //Exo player
+    implementation deps.exo_player
+    implementation deps.exo_player_hls
+
+    //Async
+    implementation deps.coroutines.core
+    implementation deps.coroutines.android
+
+    //Image Loading
+    implementation deps.glide.runtime
+    kapt deps.glide.compiler
+
+    //permissions
+    implementation deps.dexter
+
+    implementation deps.eventbus
+
+}

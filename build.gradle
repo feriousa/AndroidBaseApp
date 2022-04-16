@@ -1,0 +1,21 @@
+buildscript {
+    apply from: 'versions.gradle'
+
+    addRepos(repositories)
+
+    dependencies {
+        classpath deps.android_gradle_plugin
+        classpath deps.kotlin_gradle_plugin
+        classpath deps.playservice_gradle_plugin
+        classpath deps.hilt_plugin
+        classpath deps.sonar
+    }
+}
+
+allprojects {
+    addRepos(repositories)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

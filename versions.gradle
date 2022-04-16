@@ -192,6 +192,7 @@ ext.versions = versions
 //Repositories
 static def addRepos(RepositoryHandler handler) {
     handler.google()
+    handler.jcenter()
     handler.mavenCentral()
     handler.maven { url "https://jitpack.io" }
 }
